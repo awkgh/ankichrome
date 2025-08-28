@@ -7,7 +7,7 @@ chrome.runtime.onInstalled.addListener((details) => {
     console.log('AnkiChrome extension installed');
     // Initialize default settings
     chrome.storage.local.set({
-      enabled: true,
+      
       autoSync: false,
       syncInterval: 300000, // 5 minutes
       ankiEndpoint: 'http://localhost:8765'
@@ -24,16 +24,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       sendResponse({ status: 'active' });
       break;
       
-    case 'toggleExtension':
-      chrome.storage.local.get(['enabled'], (result) => {
-        const newState = !result.enabled;
-        chrome.storage.local.set({ enabled: newState });
-        sendResponse({ enabled: newState });
-      });
-      return true; // Keep message channel open for async response
+    
       
     case 'getSettings':
-      chrome.storage.local.get(['enabled', 'autoSync', 'syncInterval'], (result) => {
+      chrome.storage.local.get(['autoSync', 'syncInterval'], (result) => {
         sendResponse(result);
       });
       return true;

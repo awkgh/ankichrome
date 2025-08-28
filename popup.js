@@ -15,11 +15,7 @@ let availableDecks = [];
 let availableModels = [];
 
 function initializePopup() {
-    // Extension toggle
-    const extensionToggle = document.getElementById('extension-toggle');
-    extensionToggle.addEventListener('change', function() {
-        toggleExtension(this.checked);
-    });
+    
     
     // Deck selection
     document.getElementById('deck-select').addEventListener('change', handleDeckSelection);
@@ -448,15 +444,7 @@ function showError(message) {
     alert('Error: ' + message);
 }
 
-function toggleExtension(enabled) {
-    chrome.runtime.sendMessage({
-        action: 'toggleExtension'
-    }, function(response) {
-        if (response && response.enabled !== undefined) {
-            document.getElementById('extension-toggle').checked = response.enabled;
-        }
-    });
-}
+
 
 function openOptions() {
     chrome.runtime.openOptionsPage();
