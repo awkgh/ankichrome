@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnkiChrome</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="popup-container">
+        <header class="popup-header">
+            <div class="logo">
+                <span class="logo-icon">📚</span>
+                <h1>AnkiChrome</h1>
+            </div>
+            <div class="status-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="extension-toggle" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </header>
+
+        <main class="popup-content">
+            <!-- Step 1: Deck and Model Selection -->
+            <div id="step-selection" class="step-container active">
+                <h3>Select Deck and Note Type</h3>
+                <p class="step-description">Choose a deck and note type for your card</p>
+                
+                <div class="selection-group">
+                    <label for="deck-select" class="selection-label">Deck:</label>
+                    <select id="deck-select" class="selection-dropdown">
+                        <option value="">Loading decks...</option>
+                    </select>
+                </div>
+                
+                <div class="selection-group">
+                    <label for="model-select" class="selection-label">Note Type:</label>
+                    <select id="model-select" class="selection-dropdown">
+                        <option value="">Select a deck first...</option>
+                    </select>
+                </div>
+                
+                <button class="action-btn primary" id="continue-to-card" disabled>
+                    Continue to Card Creation
+                </button>
+            </div>
+
+            <!-- Step 2: Card Creation -->
+            <div id="step-card" class="step-container">
+                <h3>Create New Card</h3>
+                <p class="step-description">Fill in the card details</p>
+                <div class="deck-model-info">
+                    <div class="info-item">
+                        <span class="info-label">Deck:</span>
+                        <span class="info-value" id="card-deck-name">Default</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Note Type:</span>
+                        <span class="info-value" id="card-model-name">Basic</span>
+                    </div>
+                </div>
+                
+                <div id="card-fields-container">
+                    <!-- Dynamic fields will be inserted here -->
+                </div>
+                
+                <div class="card-actions">
+                    <button class="action-btn primary" id="create-card-btn">
+                        <span class="btn-icon">✅</span>
+                        Create Card
+                    </button>
+                    <button class="action-btn secondary" id="back-to-selection">← Back to Selection</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="popup-footer">
+            <button class="footer-btn" id="open-options">Options</button>
+            <button class="footer-btn" id="open-anki">Open Anki</button>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html> 

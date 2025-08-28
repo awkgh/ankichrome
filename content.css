@@ -1,0 +1,97 @@
+/* Content script styles for AnkiChrome extension */
+
+/* Selection highlight styles */
+.ankichrome-selection {
+  background-color: rgba(76, 175, 80, 0.2);
+  border-bottom: 2px solid #4CAF50;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.ankichrome-selection:hover {
+  background-color: rgba(76, 175, 80, 0.3);
+}
+
+/* Context menu styles */
+.ankichrome-context-menu {
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 8px 0;
+  z-index: 10002;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  min-width: 150px;
+}
+
+.ankichrome-context-menu-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.ankichrome-context-menu-item:hover {
+  background-color: #f5f5f5;
+}
+
+.ankichrome-context-menu-item:active {
+  background-color: #e0e0e0;
+}
+
+/* Tooltip styles */
+.ankichrome-tooltip {
+  position: absolute;
+  background: #333;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10003;
+  pointer-events: none;
+}
+
+.ankichrome-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+/* Loading spinner */
+.ankichrome-loading {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #4CAF50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Notification styles */
+.ankichrome-notification {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+} 

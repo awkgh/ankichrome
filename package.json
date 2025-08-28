@@ -1,0 +1,39 @@
+{
+  "name": "ankichrome",
+  "version": "1.0.0",
+  "description": "A Chrome extension for seamless Anki integration while browsing the web",
+  "main": "manifest.json",
+  "scripts": {
+    "build": "echo 'Build complete - ready for Chrome extension loading'",
+    "dev": "echo 'Development mode - load extension in Chrome'",
+    "test": "echo 'No tests configured yet'",
+    "lint": "echo 'No linter configured yet'",
+    "clean": "echo 'Clean complete'"
+  },
+  "keywords": [
+    "chrome-extension",
+    "anki",
+    "flashcards",
+    "learning",
+    "spaced-repetition",
+    "browser-extension"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ankichrome.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/ankichrome/issues"
+  },
+  "homepage": "https://github.com/yourusername/ankichrome#readme",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "Chrome >= 88"
+  ]
+} 

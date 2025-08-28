@@ -1,0 +1,395 @@
+/* Popup styles for AnkiChrome extension */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    background: #f8f9fa;
+}
+
+.popup-container {
+    width: 400px;
+    min-height: 500px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* Header */
+.popup-header {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-size: 24px;
+}
+
+.logo h1 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.3);
+    transition: 0.3s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: rgba(255,255,255,0.8);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Content */
+.popup-content {
+    padding: 20px;
+    min-height: 400px;
+}
+
+/* Step Containers */
+.step-container {
+    display: none;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.step-container.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.step-container h3 {
+    font-size: 18px;
+    color: #495057;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.step-description {
+    text-align: center;
+    color: #6c757d;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+/* Selection Interface */
+.selection-group {
+    margin-bottom: 20px;
+}
+
+.selection-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 8px;
+}
+
+.selection-dropdown {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    font-size: 14px;
+    background: white;
+    transition: border-color 0.2s ease;
+}
+
+.selection-dropdown:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+#continue-to-card {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Card Creation */
+.deck-model-info {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #e9ecef;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-label {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.info-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4CAF50;
+}
+
+/* Compact field title row */
+.field-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 2px; /* super compact */
+}
+
+.field-title h4 {
+    margin: 0;
+    font-size: 12px; /* smaller title */
+    font-weight: 600;
+    color: #495057;
+}
+
+/* Tiny switch */
+.field-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: #6c757d;
+}
+
+.field-toggle input[type="checkbox"] { display: none; }
+
+.field-toggle-slider {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 10px;
+    background-color: #ced4da;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.field-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 6px;
+    width: 6px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.2s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+.field-toggle input[type="checkbox"]:checked + .field-toggle-slider { background-color: #4CAF50; }
+.field-toggle input[type="checkbox"]:checked + .field-toggle-slider:before { transform: translateX(8px); }
+
+/* Content spacing */
+.field-content {
+    padding: 8px 0 12px 0; /* tighter spacing */
+}
+
+.field-content.hidden { display: none; }
+
+.field-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #495057;
+}
+
+.field-input,
+.field-textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.field-input:focus,
+.field-textarea:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.field-textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+#card-fields-container {
+    margin-bottom: 20px;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.card-actions .action-btn {
+    flex: 1;
+}
+
+/* Action Buttons */
+.action-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.action-btn:disabled {
+    background: #6c757d !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.action-btn.primary {
+    background: #4CAF50;
+    color: white;
+}
+
+.action-btn.primary:hover:not(:disabled) {
+    background: #45a049;
+    transform: translateY(-1px);
+}
+
+.action-btn.secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.action-btn.secondary:hover {
+    background: #5a6268;
+    transform: translateY(-1px);
+}
+
+.btn-icon {
+    font-size: 16px;
+}
+
+/* Footer */
+.popup-footer {
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    gap: 10px;
+}
+
+.footer-btn {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background: white;
+    color: #495057;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.footer-btn:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+}
+
+/* Responsive */
+@media (max-width: 450px) {
+    .popup-container {
+        width: 350px;
+    }
+    
+    .popup-content {
+        padding: 15px;
+    }
+    
+    .popup-header {
+        padding: 15px;
+    }
+    
+    .logo h1 {
+        font-size: 16px;
+    }
+    
+    .card-actions {
+        flex-direction: column;
+    }
+} 

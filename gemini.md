@@ -1,0 +1,1 @@
+Before making any modifications to the project, please ask the user if they would like to use Git for version control first.

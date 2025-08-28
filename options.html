@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnkiChrome Options</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <div class="options-container">
+        <header class="options-header">
+            <div class="logo">
+                <span class="logo-icon">📚</span>
+                <h1>AnkiChrome Options</h1>
+            </div>
+        </header>
+
+        <main class="options-content">
+            <section class="options-section">
+                <h2>General Settings</h2>
+                
+                <div class="setting-group">
+                    <label class="setting-label">
+                        <input type="checkbox" id="enable-extension">
+                        <span class="checkmark"></span>
+                        Enable Extension
+                    </label>
+                    <p class="setting-description">Enable or disable the AnkiChrome extension</p>
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-label">
+                        <input type="checkbox" id="auto-sync">
+                        <span class="checkmark"></span>
+                        Auto Sync
+                    </label>
+                    <p class="setting-description">Automatically sync with Anki at regular intervals</p>
+                </div>
+
+                <div class="setting-group">
+                    <label for="sync-interval">Sync Interval</label>
+                    <select id="sync-interval" class="setting-input">
+                        <option value="300000">5 minutes</option>
+                        <option value="600000">10 minutes</option>
+                        <option value="1800000">30 minutes</option>
+                        <option value="3600000">1 hour</option>
+                        <option value="7200000">2 hours</option>
+                    </select>
+                    <p class="setting-description">How often to automatically sync with Anki</p>
+                </div>
+            </section>
+
+            <section class="options-section">
+                <h2>Anki Connection</h2>
+                
+                <div class="setting-group">
+                    <label for="anki-endpoint">AnkiConnect Endpoint</label>
+                    <input type="text" id="anki-endpoint" class="setting-input" 
+                           placeholder="http://localhost:8765" value="http://localhost:8765">
+                    <p class="setting-description">The URL endpoint for AnkiConnect (usually http://localhost:8765)</p>
+                </div>
+
+                <div class="setting-group">
+                    <label for="default-deck">Default Deck</label>
+                    <input type="text" id="default-deck" class="setting-input" 
+                           placeholder="Default" value="Default">
+                    <p class="setting-description">Default deck name for new cards</p>
+                </div>
+
+                <div class="setting-group">
+                    <label for="default-model">Default Note Type</label>
+                    <input type="text" id="default-model" class="setting-input" 
+                           placeholder="Basic" value="Basic">
+                    <p class="setting-description">Default note type for new cards</p>
+                </div>
+            </section>
+
+            <section class="options-section">
+                <h2>Content Settings</h2>
+                
+                <div class="setting-group">
+                    <label class="setting-label">
+                        <input type="checkbox" id="show-floating-button">
+                        <span class="checkmark"></span>
+                        Show Floating Button
+                    </label>
+                    <p class="setting-description">Show the floating action button on web pages</p>
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-label">
+                        <input type="checkbox" id="context-menu">
+                        <span class="checkmark"></span>
+                        Enable Context Menu
+                    </label>
+                    <p class="setting-description">Add "Add to Anki" option to right-click context menu</p>
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-label">
+                        <input type="checkbox" id="keyboard-shortcuts">
+                        <span class="checkmark"></span>
+                        Enable Keyboard Shortcuts
+                    </label>
+                    <p class="setting-description">Enable Ctrl+Shift+A shortcut to add selection to Anki</p>
+                </div>
+            </section>
+
+            <section class="options-section">
+                <h2>Data Management</h2>
+                
+                <div class="setting-group">
+                    <button id="export-data" class="action-btn secondary">Export Data</button>
+                    <p class="setting-description">Export your AnkiChrome data as a JSON file</p>
+                </div>
+
+                <div class="setting-group">
+                    <button id="import-data" class="action-btn secondary">Import Data</button>
+                    <input type="file" id="import-file" accept=".json" style="display: none;">
+                    <p class="setting-description">Import AnkiChrome data from a JSON file</p>
+                </div>
+
+                <div class="setting-group">
+                    <button id="clear-data" class="action-btn danger">Clear All Data</button>
+                    <p class="setting-description">Clear all stored data (this cannot be undone)</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="options-footer">
+            <button id="save-options" class="action-btn primary">Save Options</button>
+            <button id="reset-options" class="action-btn secondary">Reset to Defaults</button>
+        </footer>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html> 
