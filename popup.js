@@ -31,7 +31,7 @@ function initializePopup() {
     document.getElementById('continue-to-card').addEventListener('click', showCardCreation);
     
     // Navigation buttons
-    document.getElementById('back-to-selection').addEventListener('click', showStep('step-selection'));
+    document.getElementById('back-to-selection').addEventListener('click', () => showStep('step-selection'));
     
     // Card creation
     document.getElementById('create-card-btn').addEventListener('click', createCard);
@@ -56,10 +56,8 @@ function loadDecksAndRestoreSelections() {
             console.log('Decks loaded:', availableDecks);
             populateDeckDropdown();
             
-            // Restore last selections
+            // Restore last selections and decide which step to show
             restoreLastSelections();
-            
-            showStep('step-selection');
         } else {
             const errorMsg = response ? response.error : 'Failed to load decks';
             console.error('Failed to load decks:', errorMsg);
@@ -82,15 +80,21 @@ function populateDeckDropdown() {
 
 function restoreLastSelections() {
     chrome.storage.local.get(['lastDeck', 'lastModel'], function(result) {
-        if (result.lastDeck) {
+        if (result.lastDeck && result.lastModel) {
             const deckSelect = document.getElementById('deck-select');
             deckSelect.value = result.lastDeck;
             currentDeck = availableDecks.find(deck => deck.name === result.lastDeck);
-            
-            if (currentDeck && result.lastModel) {
-                // Load models for the selected deck
-                loadModelsAndRestoreModel(result.lastModel);
+
+            if (currentDeck) {
+                // Deck exists, now check model
+                loadModelsAndRestoreModel(result.lastModel, true); // Pass a flag to show card creation
+            } else {
+                // Saved deck doesn't exist anymore
+                showStep('step-selection');
             }
+        } else {
+            // No saved deck or model
+            showStep('step-selection');
         }
     });
 }
@@ -139,7 +143,7 @@ function loadModels() {
     });
 }
 
-function loadModelsAndRestoreModel(lastModelName) {
+function loadModelsAndRestoreModel(lastModelName, showCardUI = false) {
     console.log('Loading models and restoring model selection...');
     
     chrome.runtime.sendMessage({
@@ -160,12 +164,23 @@ function loadModelsAndRestoreModel(lastModelName) {
                 
                 if (currentModel) {
                     updateContinueButton('continue-to-card', true);
+                    if (showCardUI) {
+                        showCardCreation();
+                    }
+                } else if (showCardUI) {
+                    // Saved model doesn't exist anymore
+                    showStep('step-selection');
                 }
+            } else if (showCardUI) {
+                showStep('step-selection');
             }
         } else {
             const errorMsg = response ? response.error : 'Failed to load models';
             console.error('Failed to load models:', errorMsg);
             showError(`Failed to load models: ${errorMsg}`);
+            if (showCardUI) {
+                showStep('step-selection');
+            }
         }
     });
 }
