@@ -9,7 +9,7 @@ A powerful Chrome extension that seamlessly integrates with Anki to help you cre
 - **Note Type Selection**: Select the appropriate note type for your card
 - **Dynamic Form Fields**: Automatically generates form fields based on your note type
 - **Smart Integration**: Works with AnkiConnect for seamless Anki integration
-- **Keyboard Shortcuts**: Use Ctrl+Shift+A to quickly open the extension
+
 - **Customizable Settings**: Configure AnkiConnect endpoint and preferences
 
 ## Installation
@@ -56,7 +56,7 @@ The extension provides a simple 3-step process:
 ### Quick Access
 
 - **Extension Icon**: Click the extension icon in your toolbar
-- **Keyboard Shortcut**: Use `Ctrl+Shift+A` to open the extension popup
+
 
 ### Workflow
 
